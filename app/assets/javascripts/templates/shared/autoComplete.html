@@ -1,0 +1,5 @@
+   <a tabindex="-1">
+     <img ng-src="{{match.model._source.avatar.thumb.url}}" alt="" width="45" class="img-circle"/>
+     &nbsp;
+     <span ng-bind-html-unsafe="match.model._source.username | typeaheadHighlight:query">{{match.model._source.username}}</span>
+   </a>

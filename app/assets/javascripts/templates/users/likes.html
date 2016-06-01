@@ -1,0 +1,9 @@
+<h2>Posts you liked:</h2>
+<br>
+<ng-include src=" 'posts/_postPreview.html'"></ng-include>
+<br>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4" ng-show="posts.length < total_entries">
+    <a href class="btn btn-default btn-lg btn-block" ng-click="loadLikes()">Load more</a>
+  </div>
+</div>

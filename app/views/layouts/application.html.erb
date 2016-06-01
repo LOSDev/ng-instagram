@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ng-Instagram</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body ng-app="Angstagram">
+  <div ng-include=" 'shared/_navbar.html' ">  </div>
+  <div class="alert" ng-show="flash.getMessage()">
+    <p>{{flash.getMessage()}}</p>
+  </div>
+  <div class="col-md-8 col-md-offset-2">
+    <ui-view>
+
+    </ui-view>
+  </div>
+  <footer class="clearfix col-md-8 col-md-offset-2">
+    <hr>
+
+    <h5>
+      <%= link_to "My Github", "https://github.com/LOSDev?tab=repositories", target: '_blank' %>
+      <div class="pull-right">
+         &copy; 2016 LOSDEV
+      </div>
+    </h5>
+
+
+    <h5></h5>
+    <hr>
+  </footer>
+</body>
+</html>

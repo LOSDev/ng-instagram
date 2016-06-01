@@ -1,0 +1,31 @@
+<h2>Create Post</h2>
+<hr>
+<form ng-submit="addPost()">
+
+  <div class="row">
+    <div class="progress col-md-12" ng-show="percentage">
+      <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{percentage}}"
+      aria-valuemin="0" aria-valuemax="100" style="width:{{percentage}}%">
+        {{percentage}}
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="Description">Image Description:</label>
+
+        <input id="post_description" type="text" class="form-control" placeholder="Description" ng-model="description"></input>
+      </div>
+      <label for="Image">Drag &amp; Drop / Select Image</label>
+      <input id="post_image" class="btn btn-info" type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'"
+       ngf-accept="'image/*'" ngf-max-size="5MB" ngf-min-height="150" required onchange="angular.element(this).scope().setFile(this)"></input>
+       <br>
+       <button type="submit" class="btn btn-primary">Create Post</button>
+    </div>
+    <div class="col-md-6">
+      <label ng-show="image_source" for="Preview">Image Preview:</label>
+
+      <img ng-src="{{image_source}}" class="img-responsive">
+      </div>
+  </div>
+
+</form>

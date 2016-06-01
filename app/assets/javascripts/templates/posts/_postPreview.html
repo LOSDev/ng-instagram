@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-4 col-xs-4" ng-repeat="post in posts">
+    <a href ng-click="openModal(post.id)" ng-mouseover="showStats = true" ng-mouseleave="showStats = false">
+      <img ng-src="{{post.image}}" alt="" class="img-responsive"/>
+    </a>
+    <div class="overlay" ng-show="showStats">
+      <h5><span class="glyphicon glyphicon-heart"></span>&nbsp;{{post.likes}}</h5>
+      <h5><span class="glyphicon glyphicon-comment"></span>&nbsp;{{post.comments}}</h5>
+    </div>
+    <br>
+  </div>
+</div>

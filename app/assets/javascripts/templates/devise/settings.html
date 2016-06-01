@@ -1,0 +1,49 @@
+<div class="page-header">
+  <h1>Edit Your Profile</h1>
+</div>
+
+<form ng-submit="editSettings()">
+  <div class="form-group">
+    <input id="user_email" type="email" class="form-control" placeholder="Email" ng-model="user.email">
+    <span class="text-danger" ng-repeat="error in errors.email">{{error}}</span>
+  </div>
+  <div class="form-group">
+    <input id="user_username" type="text" class="form-control" placeholder="Username" ng-model="user.username">
+    <span class="text-danger" ng-repeat="error in errors.username">{{error}}</span>
+  </div>
+  <div class="form-group">
+    <input id="user_bio" type="text" class="form-control" placeholder="Bio" ng-model="user.bio">
+    <span class="text-danger" ng-repeat="error in errors.bio">{{error}}</span>
+  </div>
+  <div class="form-group">
+    <input id="user_password" type="password" class="form-control" placeholder="Password" ng-model="user.password">
+    <span class="text-danger" ng-repeat="error in errors.password">{{error}}</span>
+  </div>
+  <div class="form-group">
+    <input id="user_password_confirmation" type="password" class="form-control" placeholder="Password Confirmation" ng-model="user.password_confirmation">
+    <span class="text-danger" ng-repeat="error in errors.password_confirmation">{{error}}</span>
+  </div>
+  <div class="form-group">
+    <input id="user_current_password" type="password" class="form-control" placeholder="Current Password" ng-model="user.current_password">
+    <span class="text-danger" ng-repeat="error in errors.current_password">{{error}}</span>
+  </div>
+
+   <br>
+   <div class="row">
+     <div class="col-md-6">
+       <label for="Avatar">Avatar</label>
+       <input id="user_avatar" class="btn btn-info" type="file" ngf-select ng-model="user.avatar" name="file" ngf-pattern="'image/*'"
+        ngf-accept="'image/*'" ngf-max-size="5MB" ngf-min-height="150" onchange="angular.element(this).scope().setFile(this)"></input>
+        <span class="text-danger" ng-repeat="error in errors.avatar">{{error}}</span>
+        <br>
+        <button type="submit" class="btn btn-primary">Update Account</button>
+        <br>
+     </div>
+     <div class="col-md-6">
+       <label ng-show="image_source" for="Preview">Avatar Preview:</label>
+
+       <img ng-src="{{image_source}}" class="img-responsive img-circle">
+     </div>
+   </div>
+</form>
+<a href class="btn btn-danger" ng-click="deleteAccount()">Delete Account?</a>

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-md-4 col-xs-4">
+    <img ng-src="{{user.avatar.medium.url}}" alt="" class="img-circle center-block" width="200"/>
+  </div>
+  <div class="col-md-8 col-xs-8">
+      <h3>{{user.username}}
+        <small>
+          <a href ng-hide="followingThisUser" class="btn btn-primary" ng-click="followUser()">
+          <span class="glyphicon glyphicon-plus"></span>&nbsp;Follow</a>
+          <a href ng-show="followingThisUser" class="btn btn-success" ng-click="unfollowUser()">
+            <span class="glyphicon glyphicon-check"></span>&nbsp;Following</a>
+        </small>
+      </h3>
+      <h5><i>{{user.bio}}</i></h5>
+      <div class= row>
+        <div class="col-md-4 col-xs-4 h4"> {{user.total_entries}} posts </div>
+        <div class="col-md-4 col-xs-4 h4"><a ng-href="/#/users/{{user.slug}}/followers" ng-click="loggedIn()">{{user.followers}} followers </a></div>
+        <div class="col-md-4 col-xs-4 h4"><a ng-href="/#/users/{{user.slug}}/following" ng-click="loggedIn()">{{user.following}} following </a></div>
+      </div>
+  </div>
+</div>
+<br>
+<ng-include src=" 'posts/_postPreview.html' "></ng-include>
+<br>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4" ng-show="posts.length < total_entries">
+    <a href class="btn btn-default btn-lg btn-block" ng-click="loadUserPosts()">Load more</a>
+  </div>
+</div>

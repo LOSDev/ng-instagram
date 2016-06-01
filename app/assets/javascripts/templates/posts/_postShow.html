@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-md-8">
+    <img ng-src="{{post.image}}" alt="" class="img-responsive"/>
+    <br>
+  </div>
+  <div class="col-md-4">
+    <p>
+      <a ui-sref="userDetails({id: post.user.slug})">
+        <img ng-src="{{post.user.avatar.thumb.url}}" alt="" width="50" class="img-circle"/>
+      </a>
+      <span><a ui-sref="userDetails({id: post.user.slug})">{{post.user.username}}</a></span>
+
+    </p>
+    <hr>
+    <p>
+      <div class="">
+        {{post.likes}} likes
+        <span class="pull-right">{{post.time_ago}}</span>
+
+      </div>
+    </p>
+    <p ng-show="post.description">
+      <a ui-sref="userDetails({id: post.user.slug})">{{post.user.username}}</a>
+      <span ng-bind-html=" linkifyDescription() "></span>
+    </p>
+    <p>
+      <form class="form form-inline" method="put" ng-submit="sendDescription()" ng-show="checkOwner(post.user.id)">
+        <label for="description"></label>
+        <div class="form-group">
+          <input type="text" id="post_description" value="" ng-model="post.description" class="form-control" placeholder="add a description">
+          <button type="submit" class="btn btn-info">Change</button>
+        </div>
+      </form>
+    </p>
+    <p>
+      <a href ng-click="loadComments()" ng-show="comments.total_entries > comments.length" class="text-center">load more comments</a>
+      <div class="" ng-repeat="comment in comments">
+        <a ui-sref="userDetails({id: comment.user.slug})">{{comment.user.username}}</a>
+        {{comment.content}}
+        <a href class="text-danger pull-right" ng-click="deleteComment(comment)" ng-show="checkOwner(comment.user.id)">
+          X
+        </a>
+
+      </div>
+
+    </p>
+    <hr>
+    <div class="" ng-if="$root.currentUser">
+      <form class="form form-inline" ng-submit="submitComment()" ng-model="comment">
+        <div class="form-group">
+          <input id="comment_content" type="text" name="content" value="" ng-model="comment.content" class="form-control" placeholder="Add a comment...">
+          <button id="submit_comment" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-comment"></i></button>
+        </div>
+      </form>
+      <br>
+      <p ng-hide="checkOwner(post.user.id)">
+        <a id="post_like_button" href class="btn btn-danger" ng-hide="post.like" ng-click="likePost()"><i class="glyphicon glyphicon-heart" ></i></a>
+        <a id="post_unlike_button" href class="btn btn-success" ng-show="post.like" ng-click="unlikePost()"><i class="glyphicon glyphicon-check" ></i></a>
+      </p>
+
+      <a href="/#/posts/{{post.id}}" ng-click="deletePost(post)" class="btn btn-danger" ng-show="checkOwner(post.user.id)">Delete this Post</a>
+
+    </div>
+
+  </div>
+</div>

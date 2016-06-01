@@ -1,0 +1,22 @@
+<h2>{{user.username}} follows: </h2>
+<ul class="list-group">
+  <li class="list-group-item" ng-repeat="follower in followers">
+    <div class="media">
+      <div class="media-left">
+        <a ui-sref="userDetails({ id: follower.slug })">
+          <img ng-src="{{follower.avatar.thumb.url}}" alt="" class=""/>
+        </a>
+      </div>
+      <div class="media-body">
+        <a ui-sref="userDetails({ id: follower.slug })">
+          <h3>{{follower.username}} <small> - {{follower.bio}}</small></h3>
+        </a>
+      </div>
+    </div>
+  </li>
+</ul>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4" ng-show="followers.length < user.following">
+    <a href class="btn btn-default btn-lg btn-block" ng-click="getFollowedUsers()">Load more</a>
+  </div>
+</div>

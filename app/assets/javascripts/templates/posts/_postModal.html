@@ -1,0 +1,14 @@
+<div class="modal-body">
+  <div ng-include=" 'posts/_postShow.html' ">
+  </div>
+</div>
+<div class="modal-footer">
+    <a ng-show="post.next_id" href tooltip-placement="right" uib-tooltip="{{post.user.username}}'s next post"
+      ng-click="loadPost(post.next_id)" class="pull-left">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a ng-show="post.previous_id" href tooltip-placement="left" uib-tooltip="{{post.user.username}}'s previous post"
+      ng-click="loadPost(post.previous_id)">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+</div>

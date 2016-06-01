@@ -1,0 +1,72 @@
+<div class="" ng-controller="NavCtrl">
+  <nav class="navbar navbar-inverse" >
+    <div class="container-fluid col-md-8 col-md-offset-2">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand formal-script" ui-sref="home"><span class="glyphicon glyphicon-camera"></span>&nbsp;ng-Instagram</a>
+      </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div >
+        <ul class="nav navbar-nav">
+          <li></li>
+        </ul>
+
+        <form class="navbar-form navbar-left">
+          <div class="form-group has-feedback">
+            <input id="search_query" type="text" size="20" ng-model="query" placeholder="Search users..."
+            uib-typeahead="user as user for user in getUsers($viewValue)"
+            typeahead-loading="loadingUsers" typeahead-no-results="noResults" class="form-control"
+            typeahead-template-url="shared/autoComplete.html"
+            typeahead-on-select="selectUser($item, $model, $label)">
+            <i class="glyphicon glyphicon-search form-control-feedback"></i>
+            <i ng-show="loadingUsers" class="glyphicon glyphicon-refresh"></i>
+          </div>
+        </form>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li ng-show="signedIn()">
+            <p class="navbar-btn">
+              <a ng-href="/#/posts/new" class="btn btn-info btn-file">
+                  <span class="glyphicon glyphicon-picture"></span> New Post
+              </a>
+            </p>
+          </li>
+          <li ng-hide="signedIn()">
+            <a href popover-is-open="isOpen" uib-popover-template=" 'shared/popoverLogin.html' "
+              popover-append-to-body popover-title="Log in" popover-placement="bottom">
+                <span class="glyphicon glyphicon-log-in"></span>&nbsp;Log in
+            </a>
+          </li>
+          <li ng-hide="signedIn()"><a ng-href="#/register"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Sign up</a></li>
+          <li>&nbsp;</li>
+          <li>
+            <div class="btn-group" uib-dropdown is-open="status.isopen" ng-show="signedIn()">
+              <p class="navbar-btn">
+                <button id="single-button" type="button" class="btn btn-default" uib-dropdown-toggle ng-disabled="disabled">
+                <span class="glyphicon glyphicon-menu-hamburger"></span>  {{ user.username }}  <span class="caret"></span>
+                </button>
+              </p>
+              <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li><a ui-sref="userDetails( {id: user.slug })"><span class="glyphicon glyphicon-user"></span>&nbsp;My Profile</a></li>
+                <li><a ui-sref="userFeed()"><span class="glyphicon glyphicon-th"></span>&nbsp;Feed</a></li>
+                <li><a ui-sref="likes( {id: user.slug })"><span class="glyphicon glyphicon-heart"></span>&nbsp;Liked Posts</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ui-sref="userSettings()"><span class="glyphicon glyphicon-list"></span>&nbsp;Account Settings</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Log out</a></li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <div class="progress" ng-show="percentage">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{percentage}}"
+    aria-valuemin="0" aria-valuemax="100" style="width:{{percentage}}%">
+      {{percentage}}
+    </div>
+  </div>
+
+</div>
