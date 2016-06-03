@@ -29,6 +29,7 @@ gem "mini_magick"
 gem 'factory_girl_rails'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
