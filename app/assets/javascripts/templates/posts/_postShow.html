@@ -32,18 +32,23 @@
         </div>
       </form>
     </p>
-    <p>
-      <a href ng-click="loadComments()" ng-show="comments.total_entries > comments.length" class="text-center">load more comments</a>
-      <div class="" ng-repeat="comment in comments">
-        <a ui-sref="userDetails({id: comment.user.slug})">{{comment.user.username}}</a>
-        {{comment.content}}
-        <a href class="text-danger pull-right" ng-click="deleteComment(comment)" ng-show="checkOwner(comment.user.id)">
-          X
-        </a>
+    <div class="comments">
+      <a href ng-click="loadComments()" ng-show="comments.total_entries > comments.length" class="text-center">
+        <strong>
+          load more comments
+        </strong>
+      </a>
+      <div>
+        <div class="" ng-repeat="comment in comments">
+          <a ui-sref="userDetails({id: comment.user.slug})">{{comment.user.username}}</a>
+          {{comment.content}}
+          <a href class="text-danger pull-right" tooltip-placement="right-top" uib-tooltip="Delete Comment" ng-click="deleteComment(comment)" ng-show="checkOwner(comment.user.id)">
+            X
+          </a>
 
+        </div>
       </div>
-
-    </p>
+    </div>
     <hr>
     <div class="" ng-if="$root.currentUser">
       <form class="form form-inline" ng-submit="submitComment()" ng-model="comment">
@@ -54,8 +59,8 @@
       </form>
       <br>
       <p ng-hide="checkOwner(post.user.id)">
-        <a id="post_like_button" href class="btn btn-danger" ng-hide="post.like" ng-click="likePost()"><i class="glyphicon glyphicon-heart" ></i></a>
-        <a id="post_unlike_button" href class="btn btn-success" ng-show="post.like" ng-click="unlikePost()"><i class="glyphicon glyphicon-check" ></i></a>
+        <a id="post_like_button" href tooltip-placement="right-top" uib-tooltip="like this Post" class="btn btn-danger" ng-hide="post.like" ng-click="likePost()"><i class="glyphicon glyphicon-heart" ></i></a>
+        <a id="post_unlike_button" href tooltip-placement="right-top" uib-tooltip="unlike this Post" class="btn btn-success" ng-show="post.like" ng-click="unlikePost()"><i class="glyphicon glyphicon-check" ></i></a>
       </p>
 
       <a href="/#/posts/{{post.id}}" ng-click="deletePost(post)" class="btn btn-danger" ng-show="checkOwner(post.user.id)">Delete this Post</a>

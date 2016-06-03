@@ -8,7 +8,7 @@
     <span class="text-danger" ng-repeat="error in errors.email">{{error}}</span>
   </div>
   <div class="form-group">
-    <input id="user_username" type="text" class="form-control" placeholder="Username" ng-model="user.username">
+    <input id="user_username" type="text" class="form-control" placeholder="Username - (please only user numbers, letters, underscores and dashes)" ng-model="user.username">
     <span class="text-danger" ng-repeat="error in errors.username">{{error}}</span>
   </div>
   <div class="form-group">
@@ -42,7 +42,7 @@
      <div class="col-md-6">
        <label ng-show="image_source" for="Preview">Avatar Preview:</label>
 
-       <img ng-src="{{image_source}}" class="img-responsive img-circle">
+       <img ng-src="{{image_source}}" class="img-responsive">
      </div>
    </div>
 </form>

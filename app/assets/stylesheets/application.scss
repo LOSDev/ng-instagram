@@ -33,10 +33,17 @@
    padding: 4px 8px;
    color: white;
  }
+ .navbar {
+  background-color: white;
+}
  .banner {
    background-image: asset-data-url("image_6.jpeg");
    height: 500px;
  }
+ .comments {
+    max-height: 25em;
+    overflow: auto;
+}
 
  body{
     background-color: #f5f5f5;

@@ -6,4 +6,11 @@
 
 * Angular 1.5.5
 
-* App lives at http://.herokuapp.com
+* App lives at https://ancient-dusk-48379.herokuapp.com
+
+#### Differences to "instaclone"
+
+- Angular instead of jQuery
+- Carrierwave instead of Paperclip
+- kaminari instead of will_paginate
+- Elasticsearch for user and hashtag search
