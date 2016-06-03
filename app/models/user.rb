@@ -54,4 +54,4 @@ class User < ActiveRecord::Base
 
 
 end
-# Delete the previous articles index in Elasticsearch
+Article.import force: true
