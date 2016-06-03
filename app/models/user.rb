@@ -54,4 +54,4 @@ class User < ActiveRecord::Base
 
 
 end
-Article.import force: true
+User.import force: true
